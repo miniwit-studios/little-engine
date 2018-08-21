@@ -1,4 +1,5 @@
 #include "stdafx.hpp"
+#include "vulkan.hpp"
 #include "WindowsPlatformAdapter.hpp"
 #include "little-engine/Logger.hpp"
 
@@ -8,17 +9,16 @@
 
 using namespace std::chrono_literals;
 
-//#define GLFW_INCLUDE_VULKAN
-#include "middleware/glfw/glfw3.h"
-
 namespace LittleEngine::Platform
 {
     WindowsPlatformAdapter::WindowsPlatformAdapter(LoggerCore *logger)
         : PlatformAdapter(logger)
     {
+        m_glfwLogger = this->logger().branch("glfw"s);
     }
     WindowsPlatformAdapter::~WindowsPlatformAdapter()
     {
+        SafeDelete(m_glfwLogger);
     }
 
     std::string WindowsPlatformAdapter::platformName()
@@ -29,8 +29,32 @@ namespace LittleEngine::Platform
     bool WindowsPlatformAdapter::init()
     {
         logger().log("Initializing WindowsPlatformAdapter..."s);
-        if (glfwInit() != GLFW_TRUE) return false;
+
+        s_glfwLogger = this->m_glfwLogger;
+        void (*error_callback)(int, const char*) = [](int error, const char* description)
+        {
+            std::ostringstream stream;
+            stream << "Error: " << description;
+            WindowsPlatformAdapter::s_glfwLogger->log(stream.str());
+        };
+        glfwSetErrorCallback(error_callback);
+        logger().log("Configured GLFW's error callback."s);
+
+        if (glfwInit() != GLFW_TRUE)
+        {
+            logger().log("Failed to initialize GLFW."s);
+            return false;
+        }
         logger().log("GLFW initialized."s);
+
+        if (glfwVulkanSupported() != GLFW_TRUE)
+        {
+            logger().log("No vulkan-enabled devices."s);
+            return false;
+        }
+
+        uint32_t count;
+        const char **extensions = glfwGetRequiredInstanceExtensions(&count);
 
         return true;
     }
@@ -38,6 +62,9 @@ namespace LittleEngine::Platform
     {
         logger().log("Shutting down WindowsPlatformAdapter..."s);
         glfwTerminate();
+        glfwSetErrorCallback(nullptr);
+        s_glfwLogger = nullptr;
+
         logger().log("GLFW terminated."s);
     }
 
@@ -50,4 +77,6 @@ namespace LittleEngine::Platform
         }
         _getch();
     }
+
+    Logger *WindowsPlatformAdapter::s_glfwLogger = nullptr;
 }

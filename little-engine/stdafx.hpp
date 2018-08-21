@@ -13,4 +13,15 @@
 #include <windows.h>
 
 #include <string>
+#include <sstream>
 using namespace std::string_literals;
+
+template <typename T>
+void SafeDelete(T *&ptr)
+{
+    if (ptr != nullptr)
+    {
+        delete ptr;
+        ptr = nullptr;
+    }
+}

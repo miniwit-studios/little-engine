@@ -15,5 +15,9 @@ namespace LittleEngine::Platform
         virtual void shutdown() override;
 
         virtual void terminal_pauseForKey() override;
+
+    private:
+        Logger *m_glfwLogger;
+        static Logger *s_glfwLogger;
     };
 }
