@@ -2,4 +2,5 @@
 *.h linguist-language=C++
 *.hpp linguist-language=C++
 *.cpp linguist-language=C++
-
+middleware/**/* linguist-vendored
+middleware/* linguist-vendored
