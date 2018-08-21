@@ -61,7 +61,7 @@ extern "C" {
 #endif
 #endif
         
-
+    
 
 typedef uint32_t VkFlags;
 typedef uint32_t VkBool32;

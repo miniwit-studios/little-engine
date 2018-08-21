@@ -154,6 +154,7 @@
     <ClInclude Include="stdafx.hpp" />
     <ClInclude Include="vulkan.hpp" />
     <ClInclude Include="WindowsPlatformAdapter.hpp" />
+    <ClInclude Include="WindowsPlatformAdapterImpl.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -164,6 +165,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="WindowsPlatformAdapter.cpp" />
+    <ClCompile Include="WindowsPlatformAdapterImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\little-engine\little-engine.vcxproj">

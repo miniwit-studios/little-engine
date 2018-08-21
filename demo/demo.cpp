@@ -13,13 +13,16 @@ using namespace LittleEngine;
 int main()
 {
     ConsoleLoggerCore logger;
-
     Platform::WindowsPlatformAdapter pa(&logger);
-    SafeInit paInit(pa);
 
-    std::cout << "Hello, World!"s << std::endl;
-    std::cout << "This is a demo project using the "s << pa.platformName() << " Platform Adapter."s << std::endl;
+    {
+        SafeInit paInit(pa);
 
+        pa.pollEvents();
+    }
+
+    logger.log(""s);
+    logger.log("Press any key to continue..."s);
     pa.terminal_pauseForKey();
 
     return 0;

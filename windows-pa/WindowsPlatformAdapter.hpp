@@ -3,6 +3,8 @@
 
 namespace LittleEngine::Platform
 {
+    class WindowsPlatformAdapterImpl;
+
     class WINDOWSPA_API WindowsPlatformAdapter final : public PlatformAdapter
     {
     public:
@@ -14,10 +16,11 @@ namespace LittleEngine::Platform
         virtual bool init() override;
         virtual void shutdown() override;
 
+        virtual void pollEvents() override;
+
         virtual void terminal_pauseForKey() override;
 
     private:
-        Logger *m_glfwLogger;
-        static Logger *s_glfwLogger;
+        WindowsPlatformAdapterImpl *m_pimpl;
     };
 }

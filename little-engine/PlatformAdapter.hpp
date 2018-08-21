@@ -19,6 +19,8 @@ namespace LittleEngine::Platform
         virtual bool init() = 0;
         virtual void shutdown() = 0;
 
+        virtual void pollEvents() = 0;
+
         virtual void terminal_pauseForKey() = 0;
 
         Logger &logger();
