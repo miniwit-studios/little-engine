@@ -148,11 +148,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleLoggerCore.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="LoggerCore.h" />
     <ClInclude Include="PlatformAdapter.h" />
+    <ClInclude Include="SafeInit.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleLoggerCore.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="LoggerCore.cpp" />
     <ClCompile Include="PlatformAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
