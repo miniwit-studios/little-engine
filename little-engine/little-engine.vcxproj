@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;LITTLEENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,12 +149,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ConsoleLoggerCore.h" />
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="LoggerCore.h" />
-    <ClInclude Include="PlatformAdapter.h" />
-    <ClInclude Include="SafeInit.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ConsoleLoggerCore.hpp" />
+    <ClInclude Include="Logger.hpp" />
+    <ClInclude Include="LoggerCore.hpp" />
+    <ClInclude Include="PlatformAdapter.hpp" />
+    <ClInclude Include="SafeInit.hpp" />
+    <ClInclude Include="stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleLoggerCore.cpp" />

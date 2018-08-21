@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "ConsoleLoggerCore.h"
+#include "stdafx.hpp"
+#include "ConsoleLoggerCore.hpp"
 
 #include <iostream>
 

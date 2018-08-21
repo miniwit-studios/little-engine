@@ -1,5 +1,5 @@
 #pragma once
-#include "little-engine/PlatformAdapter.h"
+#include "little-engine/PlatformAdapter.hpp"
 
 namespace LittleEngine::Platform
 {

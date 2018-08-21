@@ -1,7 +1,7 @@
-#include "stdafx.h"
-#include "PlatformAdapter.h"
-#include "LoggerCore.h"
-#include "Logger.h"
+#include "stdafx.hpp"
+#include "PlatformAdapter.hpp"
+#include "LoggerCore.hpp"
+#include "Logger.hpp"
 
 namespace LittleEngine::Platform
 {

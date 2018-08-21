@@ -1,5 +1,5 @@
 #pragma once
-#include "LoggerCore.h"
+#include "LoggerCore.hpp"
 
 namespace LittleEngine
 {

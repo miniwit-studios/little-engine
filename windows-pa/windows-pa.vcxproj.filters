@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="stdafx.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsPlatformAdapter.h">
+    <ClInclude Include="WindowsPlatformAdapter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

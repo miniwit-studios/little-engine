@@ -1,12 +1,12 @@
 // demo.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include "stdafx.hpp"
 
 #include <iostream>
-#include "windows-pa/WindowsPlatformAdapter.h"
-#include "little-engine/SafeInit.h"
-#include "little-engine/ConsoleLoggerCore.h"
+#include "windows-pa/WindowsPlatformAdapter.hpp"
+#include "little-engine/SafeInit.hpp"
+#include "little-engine/ConsoleLoggerCore.hpp"
 
 using namespace LittleEngine;
 

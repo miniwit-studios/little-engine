@@ -1,6 +1,6 @@
-#include "stdafx.h"
-#include "WindowsPlatformAdapter.h"
-#include "little-engine/Logger.h"
+#include "stdafx.hpp"
+#include "WindowsPlatformAdapter.hpp"
+#include "little-engine/Logger.hpp"
 
 #include <conio.h>
 #include <chrono>

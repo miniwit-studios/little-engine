@@ -1,6 +1,6 @@
-#include "stdafx.h"
-#include "LoggerCore.h"
-#include "Logger.h"
+#include "stdafx.hpp"
+#include "LoggerCore.hpp"
+#include "Logger.hpp"
 
 namespace LittleEngine
 {
