@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "WindowsPlatformAdapterImpl.hpp"
+#include "GlfwPlatformAdapterImpl.hpp"
 
 #include <conio.h>
 #include <chrono>
@@ -9,29 +9,29 @@ using namespace std::chrono_literals;
 
 namespace LittleEngine::Platform
 {
-    WindowsPlatformAdapterImpl::WindowsPlatformAdapterImpl(Logger *logger)
+    GlfwPlatformAdapterImpl::GlfwPlatformAdapterImpl(Logger *logger)
         : m_logger(logger), m_glfwLogger(nullptr), m_inst(nullptr), m_window(nullptr)
     {
         m_glfwLogger = logger->branch("glfw"s);
     }
-    WindowsPlatformAdapterImpl::~WindowsPlatformAdapterImpl()
+    GlfwPlatformAdapterImpl::~GlfwPlatformAdapterImpl()
     {
         SafeDelete(m_glfwLogger);
     }
 
-    bool WindowsPlatformAdapterImpl::init()
+    bool GlfwPlatformAdapterImpl::init()
     {
-        m_logger->log("Initializing WindowsPlatformAdapter..."s);
+        m_logger->log("Initializing GlfwPlatformAdapter..."s);
         return init_glfwErrorCallback();
     }
-    bool WindowsPlatformAdapterImpl::init_glfwErrorCallback()
+    bool GlfwPlatformAdapterImpl::init_glfwErrorCallback()
     {
         s_glfwLogger = this->m_glfwLogger;
         void(*error_callback)(int, const char*) = [](int error, const char* description)
         {
             std::ostringstream stream;
             stream << "Error: " << description;
-            WindowsPlatformAdapterImpl::s_glfwLogger->log(stream.str());
+            GlfwPlatformAdapterImpl::s_glfwLogger->log(stream.str());
         };
         glfwSetErrorCallback(error_callback);
         m_logger->log("Configured GLFW's error callback."s);
@@ -44,7 +44,7 @@ namespace LittleEngine::Platform
         }
         return worked;
     }
-    bool WindowsPlatformAdapterImpl::init_glfw()
+    bool GlfwPlatformAdapterImpl::init_glfw()
     {
         auto worked = (glfwInit() == GLFW_TRUE);
         if (!worked)
@@ -63,7 +63,7 @@ namespace LittleEngine::Platform
         }
         return worked;
     }
-    bool WindowsPlatformAdapterImpl::init_vulkan()
+    bool GlfwPlatformAdapterImpl::init_vulkan()
     {
         auto worked = (glfwVulkanSupported() == GLFW_TRUE);
         if (!worked)
@@ -77,7 +77,7 @@ namespace LittleEngine::Platform
         }
         return worked;
     }
-    bool WindowsPlatformAdapterImpl::init_vulkanInstance()
+    bool GlfwPlatformAdapterImpl::init_vulkanInstance()
     {
         uint32_t extensionCount;
         const char **extensions = glfwGetRequiredInstanceExtensions(&extensionCount);
@@ -116,7 +116,7 @@ namespace LittleEngine::Platform
         }
         return worked;
     }
-    bool WindowsPlatformAdapterImpl::init_window()
+    bool GlfwPlatformAdapterImpl::init_window()
     {
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -133,9 +133,9 @@ namespace LittleEngine::Platform
         }
         return worked;
     }
-    void WindowsPlatformAdapterImpl::shutdown()
+    void GlfwPlatformAdapterImpl::shutdown()
     {
-        m_logger->log("Shutting down WindowsPlatformAdapter..."s);
+        m_logger->log("Shutting down GlfwPlatformAdapter..."s);
 
         glfwDestroyWindow(m_window);
         m_window = nullptr;
@@ -151,7 +151,7 @@ namespace LittleEngine::Platform
         m_logger->log("GLFW terminated."s);
     }
 
-    void WindowsPlatformAdapterImpl::pollEvents()
+    void GlfwPlatformAdapterImpl::pollEvents()
     {
         m_logger->log("Polling window events..."s);
         while (!glfwWindowShouldClose(m_window))
@@ -160,7 +160,7 @@ namespace LittleEngine::Platform
         }
     }
 
-    void WindowsPlatformAdapterImpl::terminal_pauseForKey()
+    void GlfwPlatformAdapterImpl::terminal_pauseForKey()
     {
         while (!_kbhit())
         {
@@ -169,5 +169,5 @@ namespace LittleEngine::Platform
         _getch();
     }
 
-    Logger *WindowsPlatformAdapterImpl::s_glfwLogger = nullptr;
+    Logger *GlfwPlatformAdapterImpl::s_glfwLogger = nullptr;
 }

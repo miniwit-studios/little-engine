@@ -18,13 +18,13 @@
     <ClInclude Include="stdafx.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsPlatformAdapter.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vulkan.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsPlatformAdapterImpl.hpp">
+    <ClInclude Include="GlfwPlatformAdapter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlfwPlatformAdapterImpl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,10 +35,10 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowsPlatformAdapter.cpp">
+    <ClCompile Include="GlfwPlatformAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowsPlatformAdapterImpl.cpp">
+    <ClCompile Include="GlfwPlatformAdapterImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

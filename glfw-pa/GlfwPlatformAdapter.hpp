@@ -3,13 +3,13 @@
 
 namespace LittleEngine::Platform
 {
-    class WindowsPlatformAdapterImpl;
+    class GlfwPlatformAdapterImpl;
 
-    class WINDOWSPA_API WindowsPlatformAdapter final : public PlatformAdapter
+    class WINDOWSPA_API GlfwPlatformAdapter final : public PlatformAdapter
     {
     public:
-        WindowsPlatformAdapter(LoggerCore *logger);
-        ~WindowsPlatformAdapter();
+        GlfwPlatformAdapter(LoggerCore *logger);
+        ~GlfwPlatformAdapter();
 
         virtual std::string platformName() override;
 
@@ -21,6 +21,6 @@ namespace LittleEngine::Platform
         virtual void terminal_pauseForKey() override;
 
     private:
-        WindowsPlatformAdapterImpl *m_pimpl;
+        GlfwPlatformAdapterImpl *m_pimpl;
     };
 }

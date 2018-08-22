@@ -165,7 +165,7 @@
     <ProjectReference Include="..\little-engine\little-engine.vcxproj">
       <Project>{c7f7bc38-53f3-47c6-ab24-9e78d2a838a9}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\windows-pa\windows-pa.vcxproj">
+    <ProjectReference Include="..\glfw-pa\glfw-pa.vcxproj">
       <Project>{b7d060a4-8a3c-4a55-98c7-0c8500455758}</Project>
     </ProjectReference>
   </ItemGroup>

@@ -4,11 +4,11 @@
 
 namespace LittleEngine::Platform
 {
-    class WindowsPlatformAdapterImpl
+    class GlfwPlatformAdapterImpl
     {
     public:
-        WindowsPlatformAdapterImpl(Logger *logger);
-        ~WindowsPlatformAdapterImpl();
+        GlfwPlatformAdapterImpl(Logger *logger);
+        ~GlfwPlatformAdapterImpl();
 
         bool init();
         void shutdown();

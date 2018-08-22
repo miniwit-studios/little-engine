@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "little-engine", "little-engine\little-engine.vcxproj", "{C7F7BC38-53F3-47C6-AB24-9E78D2A838A9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows-pa", "windows-pa\windows-pa.vcxproj", "{B7D060A4-8A3C-4A55-98C7-0C8500455758}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfw-pa", "glfw-pa\glfw-pa.vcxproj", "{B7D060A4-8A3C-4A55-98C7-0C8500455758}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo", "demo\demo.vcxproj", "{8FFA785A-5447-445D-B81D-F5D9649D657C}"
 EndProject

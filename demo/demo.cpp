@@ -4,7 +4,7 @@
 #include "stdafx.hpp"
 
 #include <iostream>
-#include "windows-pa/WindowsPlatformAdapter.hpp"
+#include "glfw-pa/GlfwPlatformAdapter.hpp"
 #include "little-engine/SafeInit.hpp"
 #include "little-engine/ConsoleLoggerCore.hpp"
 
@@ -13,7 +13,7 @@ using namespace LittleEngine;
 int main()
 {
     ConsoleLoggerCore logger;
-    Platform::WindowsPlatformAdapter pa(&logger);
+    Platform::GlfwPlatformAdapter pa(&logger);
 
     {
         SafeInit paInit(pa);
