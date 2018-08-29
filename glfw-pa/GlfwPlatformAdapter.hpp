@@ -11,7 +11,7 @@ namespace LittleEngine::Platform
         GlfwPlatformAdapter(LoggerCore *logger);
         ~GlfwPlatformAdapter();
 
-        virtual std::string platformName() override;
+        virtual const wchar_t *platformName() override;
 
         virtual bool init() override;
         virtual void shutdown() override;

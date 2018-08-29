@@ -10,8 +10,8 @@ namespace LittleEngine
         LoggerCore();
         virtual ~LoggerCore();
 
-        virtual Logger *branch(std::string name);
+        virtual Logger *branch(const wchar_t *name);
 
-        virtual void log(std::string message) = 0;
+        virtual void log(const wchar_t *message) = 0;
     };
 }

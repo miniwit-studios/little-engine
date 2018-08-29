@@ -6,7 +6,7 @@
 namespace LittleEngine::Platform
 {
     PlatformAdapter::PlatformAdapter(LoggerCore *logger)
-        : m_logger(logger->branch("platform-adapter"s))
+        : m_logger(logger->branch(L"platform-adapter"))
     {
     }
     PlatformAdapter::~PlatformAdapter()

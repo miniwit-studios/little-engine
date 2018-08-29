@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <chrono>
 #include <thread>
+#include <sstream>
 
 using namespace std::chrono_literals;
 
@@ -12,7 +13,7 @@ namespace LittleEngine::Platform
     GlfwPlatformAdapterImpl::GlfwPlatformAdapterImpl(Logger *logger)
         : m_logger(logger), m_glfwLogger(nullptr), m_inst(nullptr), m_window(nullptr)
     {
-        m_glfwLogger = logger->branch("glfw"s);
+        m_glfwLogger = logger->branch(L"glfw");
     }
     GlfwPlatformAdapterImpl::~GlfwPlatformAdapterImpl()
     {
@@ -21,7 +22,7 @@ namespace LittleEngine::Platform
 
     bool GlfwPlatformAdapterImpl::init()
     {
-        m_logger->log("Initializing GlfwPlatformAdapter..."s);
+        m_logger->log(L"Initializing GlfwPlatformAdapter...");
         return init_glfwErrorCallback();
     }
     bool GlfwPlatformAdapterImpl::init_glfwErrorCallback()
@@ -29,12 +30,13 @@ namespace LittleEngine::Platform
         s_glfwLogger = this->m_glfwLogger;
         void(*error_callback)(int, const char*) = [](int error, const char* description)
         {
-            std::ostringstream stream;
-            stream << "Error: " << description;
-            GlfwPlatformAdapterImpl::s_glfwLogger->log(stream.str());
+            error;
+            std::wstringstream stream;
+            stream << L"Error: " << description;
+            GlfwPlatformAdapterImpl::s_glfwLogger->log(stream.str().c_str());
         };
         glfwSetErrorCallback(error_callback);
-        m_logger->log("Configured GLFW's error callback."s);
+        m_logger->log(L"Configured GLFW's error callback.");
 
         auto worked = init_glfw();
         if (!worked)
@@ -49,15 +51,15 @@ namespace LittleEngine::Platform
         auto worked = (glfwInit() == GLFW_TRUE);
         if (!worked)
         {
-            m_logger->log("Failed to initialize GLFW."s);
+            m_logger->log(L"Failed to initialize GLFW.");
         }
         else
         {
-            m_logger->log("Initialized GLFW."s);
+            m_logger->log(L"Initialized GLFW.");
             worked = init_vulkan();
             if (!worked)
             {
-                m_logger->log("Terminating GLFW..."s);
+                m_logger->log(L"Terminating GLFW...");
                 glfwTerminate();
             }
         }
@@ -68,11 +70,11 @@ namespace LittleEngine::Platform
         auto worked = (glfwVulkanSupported() == GLFW_TRUE);
         if (!worked)
         {
-            m_logger->log("No vulkan-enabled devices."s);
+            m_logger->log(L"No vulkan-enabled devices.");
         }
         else
         {
-            m_logger->log("Vulkan is supported on your platform."s);
+            m_logger->log(L"Vulkan is supported on your platform.");
             worked = init_vulkanInstance();
         }
         return worked;
@@ -83,13 +85,15 @@ namespace LittleEngine::Platform
         const char **extensions = glfwGetRequiredInstanceExtensions(&extensionCount);
         if (extensions == nullptr)
         {
-            m_logger->log("Failed to retrieve required vulkan extensions list."s);
+            m_logger->log(L"Failed to retrieve required vulkan extensions list.");
             return false;
         }
-        m_logger->log("Fetched required vulkan extensions:"s);
+        m_logger->log(L"Fetched required vulkan extensions:");
         for (size_t q = 0; q < extensionCount; q++)
         {
-            m_logger->log("  - "s + extensions[q]);
+            std::wostringstream stream;
+            stream << L"  - " << extensions[q];
+            m_logger->log(stream.str().c_str());
         }
 
         VkInstanceCreateInfo createInfo;
@@ -101,16 +105,16 @@ namespace LittleEngine::Platform
         auto worked = (vkCreateInstance(&createInfo, nullptr, &m_inst) == VK_SUCCESS);
         if (!worked)
         {
-            m_logger->log("Failed to create vulkan instance."s);
+            m_logger->log(L"Failed to create vulkan instance.");
         }
         else
         {
-            m_logger->log("Created vulkan instance."s);
+            m_logger->log(L"Created vulkan instance.");
             worked = init_window();
 
             if (!worked)
             {
-                m_logger->log("Destroying vulkan instance..."s);
+                m_logger->log(L"Destroying vulkan instance...");
                 vkDestroyInstance(m_inst, nullptr);
             }
         }
@@ -125,17 +129,17 @@ namespace LittleEngine::Platform
 
         if (!worked)
         {
-            m_logger->log("Failed to create window."s);
+            m_logger->log(L"Failed to create window.");
         }
         else
         {
-            m_logger->log("Created window."s);
+            m_logger->log(L"Created window.");
         }
         return worked;
     }
     void GlfwPlatformAdapterImpl::shutdown()
     {
-        m_logger->log("Shutting down GlfwPlatformAdapter..."s);
+        m_logger->log(L"Shutting down GlfwPlatformAdapter...");
 
         glfwDestroyWindow(m_window);
         m_window = nullptr;
@@ -148,12 +152,12 @@ namespace LittleEngine::Platform
         glfwSetErrorCallback(nullptr);
         s_glfwLogger = nullptr;
 
-        m_logger->log("GLFW terminated."s);
+        m_logger->log(L"GLFW terminated.");
     }
 
     void GlfwPlatformAdapterImpl::pollEvents()
     {
-        m_logger->log("Polling window events..."s);
+        m_logger->log(L"Polling window events...");
         while (!glfwWindowShouldClose(m_window))
         {
             glfwPollEvents();

@@ -13,9 +13,9 @@ namespace LittleEngine::Platform
         SafeDelete(m_pimpl);
     }
 
-    std::string GlfwPlatformAdapter::platformName()
+    const wchar_t *GlfwPlatformAdapter::platformName()
     {
-        return "Windows"s;
+        return L"Windows";
     }
 
     bool GlfwPlatformAdapter::init()

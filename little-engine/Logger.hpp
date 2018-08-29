@@ -6,17 +6,17 @@ namespace LittleEngine
     class LITTLEENGINE_API Logger final : public LoggerCore
     {
     public:
-        Logger(LoggerCore *core, std::string name);
+        Logger(LoggerCore *core, const wchar_t *name, bool copyName = true);
         ~Logger();
 
-        std::string name();
+        const wchar_t *name() const;
 
-        virtual Logger *branch(std::string name) override;
+        virtual Logger *branch(const wchar_t *name) override;
 
-        void log(std::string message);
+        void log(const wchar_t *message);
 
     private:
         LoggerCore *m_core;
-        std::string m_name;
+        const wchar_t *m_name;
     };
 }

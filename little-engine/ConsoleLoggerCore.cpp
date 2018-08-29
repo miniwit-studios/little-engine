@@ -13,8 +13,8 @@ namespace LittleEngine
     {
     }
 
-    void ConsoleLoggerCore::log(std::string message)
+    void ConsoleLoggerCore::log(const wchar_t *message)
     {
-        std::cout << message << std::endl;
+        std::wcout << message << std::endl;
     }
 }

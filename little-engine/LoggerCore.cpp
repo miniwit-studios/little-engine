@@ -11,7 +11,7 @@ namespace LittleEngine
     {
     }
 
-    Logger *LoggerCore::branch(std::string name)
+    Logger *LoggerCore::branch(const wchar_t *name)
     {
         return new Logger(this, name);
     }

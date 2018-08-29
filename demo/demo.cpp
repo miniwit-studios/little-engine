@@ -21,8 +21,8 @@ int main()
         pa.pollEvents();
     }
 
-    logger.log(""s);
-    logger.log("Press any key to continue..."s);
+    logger.log(L"");
+    logger.log(L"Press any key to continue...");
     pa.terminal_pauseForKey();
 
     return 0;

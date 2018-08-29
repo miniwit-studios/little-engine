@@ -14,7 +14,7 @@ namespace LittleEngine::Platform
         PlatformAdapter(LoggerCore *logger);
         virtual ~PlatformAdapter();
 
-        virtual std::string platformName() = 0;
+        virtual const wchar_t *platformName() = 0;
 
         virtual bool init() = 0;
         virtual void shutdown() = 0;

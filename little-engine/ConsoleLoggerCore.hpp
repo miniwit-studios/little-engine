@@ -9,6 +9,6 @@ namespace LittleEngine
         ConsoleLoggerCore();
         ~ConsoleLoggerCore();
 
-        virtual void log(std::string message) override;
+        virtual void log(const wchar_t *message) override;
     };
 }
